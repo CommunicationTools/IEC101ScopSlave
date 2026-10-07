@@ -21,7 +21,7 @@ Developed by **Carlos Nardi**.
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-support-yellow?logo=buy-me-a-coffee)](https://buymeacoffee.com/cnardi)
 
 <p align="center">
-  <img src="IEC101Scop Slave Window.png" alt="IEC101Scop Slave Window 1.1.png" width="1200">
+  <img src="IEC101Scop Slave Window 1.1.png" alt="IEC101Scop Slave Window 1.1.png" width="1200">
 </p>
 
 ## Concept
@@ -82,6 +82,17 @@ IEC101Scop Slave is organized as a tree: **Channels → RTUs → Points**.
 - **Fault injection** — per-point **control permission** (Allow, Deny selection,
   Deny execution, No control — refusals mirror the command with the NEGATIVE bit)
   and per-point **quality flags** (IV, NT, SB, BL, OV).
+- **Time & Date** — **Setup → Time & Date…** picks the time base every station
+  stamps with: the **System** clock or a **Manual** date/time that keeps running
+  once set, in a **Local** or **UTC** frame with a GMT offset that can follow the
+  machine's own offset (DST-aware). Each station still layers the master's
+  **C_CS** clock-sync offset on top; the effective time shows in the status bar.
+- **Point Detail window** — double-click (or right-click) a row's IOA to edit
+  one point in a single place: its parameters (event type, spontaneous / cyclic,
+  engineering scaling, control permission, linked IOA) apply immediately, while
+  value, **quality flags** and **time tag** are *staged* and applied together as
+  **one** spontaneous event — optionally as the plain, CP24 or CP56 type for
+  that single event. Ideal for reproducing exact event sequences.
 - **Per-point simulation** — **Sine**, **Ramp**, **Random**, **Increment**, and
   **Toggle**, constrained by each point's type and paced per point, with a global
   **Start Sim / Stop Sim** button and a 0.1× – 10× speed slider.
